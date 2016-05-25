@@ -1,0 +1,2 @@
+添加 webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+明确指定每次都刷新
