@@ -1,0 +1,16 @@
+//uiwidget 挂在 cam层级下面，锚点 0.5，0.5
+//uiwidget 组件下面挂自身
+    private void CalcParam(UIWidget w)
+    {
+        if (!w)
+        {
+            return;
+        }
+        Vector2 scsize = new Vector2(Screen.width, Screen.height);//NGUITools.screenSize;
+        Vector3 lt = w.GetComponentInParent<Camera>().WorldToScreenPoint(w.transform.TransformPoint(0 - w.width / 2, w.height / 2, 0));
+        Vector3 rb = w.GetComponentInParent<Camera>().WorldToScreenPoint(w.transform.TransformPoint(w.width / 2, 0 - w.height / 2, 0));
+        g_top = Mathf.RoundToInt(lt.x);
+        g_bottom = Mathf.RoundToInt(rb.y);
+        g_left = Mathf.RoundToInt(scsize.y - lt.y);
+        g_right = Mathf.RoundToInt(scsize.x - rb.x);
+    }
